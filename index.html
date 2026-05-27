@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel with - Way to Adventure</title>
+    <meta name="description" content="Explore my travel adventures- Beacuse Every Journey Has a Story—Discover Mine.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="Travels/logo/WTA.png" type="image/x-icon">
+      . <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <style>
+    .nav-logo a {
+      font-family: 'Satisfy', cursive;
+      font-size: 30px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home" style="color:rgb(29, 140, 214);">Way To Adventure</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#videos" class="nav-link">Videos</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <video autoplay muted loop class="hero-video">
+                <source src="FOR WEB SITE BACKGROUND - Made with Clipchamp.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Discover My Travel Stories</h1>
+            <p class="hero-subtitle">Exploring the beauty of Bangladesh - from pristine beaches to misty mountains</p>
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn btn-primary">Explore Gallery</a>
+              
+                <a href="#blog" class="btn btn-secondary">Read Stories</a>
+
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Travel Gallery</h2>
+                <p class="section-subtitle">Capturing moments from Bangladesh and India</p>
+            </div>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="bangladesh">Bangladesh</button>
+                <button class="filter-btn" data-filter="india">India</button>
+              <!--   <button class="filter-btn" data-filter="coxs-bazar">Cox's Bazar</button>
+                <button class="filter-btn" data-filter="sreemangal">Sreemangal</button>
+                <button class="filter-btn" data-filter="sikkim">Sikkim</button>  -->
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Images will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightbox-close">&times;</span>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Video Section -->
+    <section id="videos" class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Travel Videos</h2>
+                <p class="section-subtitle">Experience destinations through my video collection</p>
+            </div>
+            <div class="video-grid" id="video-grid">
+                <!-- Videos will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Travel Blog</h2>
+                <p class="section-subtitle">Stories, tips, and insights from my adventures</p>
+            </div>
+            <div class="blog-grid" id="blog-grid">
+                <!-- Blog posts will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+         <div class="container">
+        <div class="header">
+            <h1>Get In Touch</h1>
+            <p>Share your travel stories or ask me anything about these destinations</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🌍 Current Base</h3>
+                <p>Exploring Bangladesh</p>
+            </div>
+            <div class="info-card">
+                <h3>📧 Email</h3>
+                <p>waytoadventure03@gmail.com</p>
+            </div>
+            <div class="info-card">
+                <h3>🗺️ Next Destination</h3>
+                <p>Planning adventures in Bandarban</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Send Message</h2>
+            
+            <div class="success-message" id="successMessage">
+                Thank you for your message! I'll get back to you soon.
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                Something went wrong. Please try again.
+            </div>
+
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Replace with your Web3Forms access key -->
+                <input type="hidden" name="access_key" value="21b119e0-0d24-4ad8-a2c1-8e10e9995bda">
+                
+                <!-- Optional: Customize subject -->
+                <input type="hidden" name="subject" value="New Contact Form Submission - Way to Adventure">
+                
+                <!-- Optional: Redirect after submission -->
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">Country/Location</label>
+                        <input type="text" id="country" name="country" placeholder="Where are you from?">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject_type">Message Type</label>
+                        <select id="subject_type" name="subject_type">
+                            <option value="general">General Inquiry</option>
+                            <option value="travel_story">Share Travel Story</option>
+                            <option value="destination_question">Destination Question</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" placeholder="Tell me about your travel experiences, ask about destinations, or share anything travel-related..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    ✈️ Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+    </section>
+    <br><br>
+
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Travel Stories</h3>
+                    <p>Exploring the beauty of Bangladesh and India, sharing stories and experiences from amazing destinations.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/waytoadventure03" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/waytoadventureofficial/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     <!--    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.youtube.com/@Waytoadventureofficial" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                       <!--   <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a> -->
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li>Banglsdesh</li>
+                        <li>India</li>
+                        <li>Bandarban</li>
+                        <li>Cox's Bazar</li>
+                        <li>Sajek</li>
+                        <li>Rajshahi</li>
+                        <li>Kolkata</li>
+                        <li>Sikkim</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Join my youtube channel!</h4>
+                     <button class="youtube-button">
+                <a href="https://www.youtube.com/@Waytoadventureofficial" class="youtube-link" target="_blank">
+            <svg class="youtube-icon" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a2.998 2.998 0 0 0-2.108-2.108c-1.86-.5-9.32-.5-9.32-.5s-7.46 0-9.32.5A2.998 2.998 0 0 0 .642 6.186C.142 8.046.142 12.002.142 12.002s0 3.956.5 5.816a2.998 2.998 0 0 0 2.108 2.108c1.86.5 9.32.5 9.32.5s7.46 0 9.32-.5a2.998 2.998 0 0 0 2.108-2.108c.5-1.86.5-5.816.5-5.816s0-3.956-.5-5.816zM9.545 15.568V8.436L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Way To Adventure</span>
+        </a>
+              </button>
+              <br><br>
+              <button class="facebook-button">
+        <a href="https://www.facebook.com/WayToAdventure03" class="facebook-link" target="_blank">
+            <svg class="facebook-icon" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span>Way To Adventure</span>
+        </a>
+    </button>
+                    
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; My Travel Stories. All rights reserved. | Made with ❤️ for adventure seekers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/images.js"></script>
+    <script src="js/videos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/blogs.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html> 
