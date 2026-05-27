@@ -2,12 +2,16 @@
 class Gallery {
     constructor() {
         this.currentFilter = 'all';
+        this.previewLimit = 6;
+        this.isExpanded = false;
         this.init();
     }
 
     init() {
         this.setupEventListeners();
         this.setupFilters();
+        this.applyPendingFilter();
+        this.filterGallery(this.currentFilter);
     }
 
     setupEventListeners() {
@@ -38,6 +42,30 @@ class Gallery {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') this.closeLightbox();
         });
+
+        const toggleBtn = document.getElementById('gallery-toggle-btn');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                let firstHiddenMatch = null;
+                if (!this.isExpanded) {
+                    const matchedItems = Array.from(document.querySelectorAll('.gallery-item'))
+                        .filter(item => item.dataset.matchesFilter !== '0');
+                    firstHiddenMatch = matchedItems[this.previewLimit] || null;
+                }
+
+                this.isExpanded = !this.isExpanded;
+                this.updateVisibleItems();
+
+                if (firstHiddenMatch) {
+                    setTimeout(() => {
+                        firstHiddenMatch.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 80);
+                }
+            });
+        }
     }
 
     setupFilters() {
@@ -68,13 +96,68 @@ class Gallery {
     filterGallery(filter) {
         const galleryItems = document.querySelectorAll('.gallery-item');
         galleryItems.forEach(item => {
-            const category = item.dataset.category;
-            if (filter === 'all' || category === filter) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
+            const category = (item.dataset.category || '').toLowerCase();
+            const tags = (item.dataset.tags || '').toLowerCase().split(/\s+/).filter(Boolean);
+
+            const matches =
+                filter === 'all' ||
+                category === filter ||
+                tags.includes(filter);
+
+            item.dataset.matchesFilter = matches ? '1' : '0';
+        });
+
+        this.updateVisibleItems();
+    }
+
+    applyPendingFilter() {
+        const pending = localStorage.getItem('pendingGalleryFilter');
+        if (pending) {
+            localStorage.removeItem('pendingGalleryFilter');
+            this.setActiveFilter(pending);
+            this.filterGallery(pending);
+            this.isExpanded = true;
+            this.updateVisibleItems();
+        }
+    }
+
+    updateVisibleItems() {
+        const items = Array.from(document.querySelectorAll('.gallery-item'));
+        const matchedItems = items.filter(item => item.dataset.matchesFilter !== '0');
+
+        matchedItems.forEach((item, index) => {
+            const shouldShow = this.isExpanded || index < this.previewLimit;
+            const wasHidden = item.style.display === 'none';
+            item.style.display = shouldShow ? 'block' : 'none';
+
+            // Animate only when new items become visible after expansion.
+            if (shouldShow && wasHidden && this.isExpanded && index >= this.previewLimit) {
+                item.classList.remove('reveal-animate');
+                requestAnimationFrame(() => item.classList.add('reveal-animate'));
+                setTimeout(() => item.classList.remove('reveal-animate'), 700);
             }
         });
+
+        items
+            .filter(item => item.dataset.matchesFilter === '0')
+            .forEach(item => {
+                item.style.display = 'none';
+            });
+
+        this.updateToggleButton(matchedItems.length);
+    }
+
+    updateToggleButton(totalMatching) {
+        const toggleBtn = document.getElementById('gallery-toggle-btn');
+        if (!toggleBtn) return;
+
+        if (totalMatching <= this.previewLimit) {
+            toggleBtn.style.display = 'none';
+            return;
+        }
+
+        toggleBtn.style.display = 'inline-flex';
+        toggleBtn.textContent = this.isExpanded ? 'Show Fewer Photos' : 'View More Photos';
     }
 
     openLightbox(lightboxId) {

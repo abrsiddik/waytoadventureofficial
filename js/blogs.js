@@ -1,7 +1,7 @@
 window.blogs = [
   {
     title: "Our Unforgettable Sreemangal Adventure",
-    image: "Travels/Bangla desh/Sreemangal/IMG_4069.JPG",
+    image: "travels/bangla desh/sreemangal/img_4069.jpg",
     excerpt: "Our Sreemangal adventure became legendary among our friend group, the story we tell at every gathering. But more than that, it became proof that life's most beautiful moments often come not from careful planning but from the courage to say 'why not?' when adventure calls.",
     content: `Sometimes the best adventures begin with the simplest words. "What if we just go somewhere?"
  It was one of those endless university days that seemed designed to drain every ounce of enthusiasm from our souls. Presentation after presentation, slide after monotonous slide, we—Shuvo, Shobuj, Ovi,Sezan, and I—had sat through what felt like an eternity of academic torture. Our minds were foggy, our spirits deflated, and all we wanted was to escape.
@@ -32,7 +32,7 @@ The night bus journey became its own adventure. As we pulled away from Dhaka's g
   // Placeholder blogs
   {
     title: "Camping Under the Stars by the Sea – A Night at Nodalia Beach",
-    image: "Travels/Bangla desh/Nodalia sea beach/Untitled design.png",
+    image: "travels/bangla desh/nodalia sea beach/untitled design.png",
     excerpt: "Sometimes the best adventures begin with no plan at all. That's exactly how I found myself camping under a starlit sky by Nodalia Sea Beach, with rain drumming on our tent and my heart full of the kind of joy that only comes from completely spontaneous decisions.",
     content: `Sometimes the best adventures begin with no plan at all. That's exactly how I found myself camping under a starlit sky by Nodalia Sea Beach, with rain drumming on our tent and my heart full of the kind of joy that only comes from completely spontaneous decisions.
     <h3>An Unplanned Escape</h3>
@@ -79,7 +79,7 @@ Shuvo and I still talk about that night whenever we need reminding that magic ex
   },
   {
     title: "Rangamati",
-    image: "Travels/Bangla desh/Rangamati/IMG_1111.JPG",
+    image: "travels/bangla desh/rangamati/img_1111.jpg",
     excerpt: " You know how some Valentine's Days are planned months in advance? Dinner reservations, flower orders,the whole romantic routine? Well, this isn't that story. This is about the Valentine's Day that started with aconcert, 200 taka between three broke university students, and a decision made under moonlight that turned into the most unforgettable adventure of our lives.",
     content: ` You know how some Valentine's Days are planned months in advance? Dinner reservations, flower orders,
  the whole romantic routine? Well, this isn't that story. This is about the Valentine's Day that started with a
@@ -236,7 +236,7 @@ After crossing the hanging bridge and taking a CNG to Kamalachari, we arrived at
   },
   {
     title: "Sajek",
-    image: "Travels/Bangla desh/Sajek/Screenshot 2025-07-07 221007.png",
+    image: "travels/bangla desh/sajek/screenshot 2025-07-07 221007.png",
     excerpt: "Coming Soon",
     content: `Coming Soon`
   },

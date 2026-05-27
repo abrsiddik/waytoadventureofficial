@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollEffects();
     initAnimations();
     initFormValidation();
+    renderFeaturedDestinations();
+    initStatsCounters();
     renderVideoPreviews();
     renderGalleryImages();
 });
@@ -85,7 +87,7 @@ function initThemeToggle() {
     const themeIcon = themeToggle.querySelector('i');
     
     // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(themeIcon, savedTheme);
 
@@ -317,72 +319,65 @@ function renderVideoPreviews() {
   if (!grid) return;
   grid.innerHTML = '';
 
-  // Function to strip HTML tags for character counting
   function stripHtml(html) {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
   }
 
+  function getYouTubeId(url) {
+    if (!url) return '';
+    const cleaned = String(url).replace('/embed//', '/embed/');
+    const embedMatch = cleaned.match(/embed\/([^?&/]+)/i);
+    if (embedMatch && embedMatch[1]) return embedMatch[1];
+    const shortMatch = cleaned.match(/youtu\.be\/([^?&/]+)/i);
+    if (shortMatch && shortMatch[1]) return shortMatch[1];
+    const watchMatch = cleaned.match(/[?&]v=([^?&/]+)/i);
+    if (watchMatch && watchMatch[1]) return watchMatch[1];
+    return '';
+  }
+
   // Show first 5 videos
   window.videos.slice(0, 5).forEach((video, index) => {
-    // Strip HTML for character counting
     const plainText = stripHtml(video.desc);
-    const shortDesc = plainText.length > 100 ? plainText.substring(0, 100) + '...' : video.desc;
-    
+    const shortDesc = plainText.length > 110 ? `${plainText.substring(0, 110)}...` : plainText;
+    const videoId = getYouTubeId(video.src);
+    const watchUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : video.src;
+    const thumb = videoId
+      ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      : 'https://i.ytimg.com/vi/mkI-UAugPuI/hqdefault.jpg';
+
     grid.innerHTML += `
-      <div class="video-item" data-video-index="${index}">
-        <div class="video-container">
-          <iframe src="${video.src}" title="${video.title}" frameborder="0" allowfullscreen></iframe>
+      <article class="video-item video-card" data-video-index="${index}">
+        <div class="video-thumb-wrap">
+          <img class="video-thumb" src="${thumb}" alt="${video.title}" loading="lazy">
+          <div class="video-thumb-overlay"></div>
+          <a class="video-play-badge" href="${watchUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${video.title} on YouTube">
+            <i class="fas fa-play"></i>
+          </a>
         </div>
-        <h3>${video.title}</h3>
-        <div class="video-description">
-          <p class="short-desc">${shortDesc}</p>
-          <p class="full-desc" style="display: none;">${video.desc}</p>
-          ${plainText.length > 100 ? '<span class="read-more-btn" style="color: var(--primary-color); cursor: pointer; font-weight: 500; text-decoration: underline;">Read More</span>' : ''}
+        <div class="video-card-body">
+          <h3>${video.title}</h3>
+          <p class="video-card-desc">${shortDesc}</p>
+          <a class="btn btn-primary video-watch-btn" href="${watchUrl}" target="_blank" rel="noopener noreferrer">
+            Watch on YouTube
+            <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-      </div>
+      </article>
     `;
   });
 
   // 6th card: Watch More
   grid.innerHTML += `
-    <a href="video.html" class="video-item-link" style="text-decoration:none;">
-      <div class="video-item watch-more-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;min-height:220px;">
-        <div style="font-size:3rem;color:var(--primary-color);margin-bottom:1rem;"><i class="fas fa-play-circle"></i></div>
-        <div style="font-size:1.2rem;font-weight:600;color:var(--primary-color);">Watch More Videos</div>
+    <a href="video.html" class="video-item video-card watch-more-card" style="text-decoration:none;">
+      <div class="watch-more-inner">
+        <div class="watch-more-icon"><i class="fas fa-play-circle"></i></div>
+        <div class="watch-more-title">View All Videos</div>
+        <div class="watch-more-subtitle">See the full Way to Adventure library</div>
       </div>
     </a>
   `;
-
-  // Add click event listeners for Read More buttons
-  document.querySelectorAll('.read-more-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      const videoItem = this.closest('.video-item');
-      const shortDesc = videoItem.querySelector('.short-desc');
-      const fullDesc = videoItem.querySelector('.full-desc');
-      const videoContainer = videoItem.querySelector('.video-container');
-      
-      // Toggle description
-      if (fullDesc.style.display === 'none') {
-        shortDesc.style.display = 'none';
-        fullDesc.style.display = 'block';
-        this.textContent = 'Read Less';
-        
-        // Expand video container
-        videoContainer.style.height = '400px';
-        videoContainer.style.transition = 'height 0.3s ease';
-      } else {
-        shortDesc.style.display = 'block';
-        fullDesc.style.display = 'none';
-        this.textContent = 'Read More';
-        
-        // Collapse video container
-        videoContainer.style.height = '220px';
-      }
-    });
-  });
 }
 
 function renderGalleryImages() {
@@ -390,9 +385,26 @@ function renderGalleryImages() {
   if (!grid) return;
   grid.innerHTML = '';
 
+  function deriveTags(image) {
+    const tags = new Set();
+    if (image.category) tags.add(String(image.category).toLowerCase());
+
+    const haystack = `${image.title || ''} ${image.alt || ''} ${image.location || ''} ${image.src || ''}`.toLowerCase();
+    const hasAny = (words) => words.some(w => haystack.includes(w));
+
+    // Lightweight heuristics (keeps existing content untouched)
+    if (hasAny(['beach', 'sea', 'coxs', "cox's", 'cazar', 'nodalia'])) tags.add('beach');
+    if (hasAny(['valley', 'hill', 'mountain', 'bandarban', 'sajek', 'sikkim', 'sylhet', 'rangamati', 'jaflong', 'lawachara'])) tags.add('mountain');
+    if (hasAny(['city', 'dhaka', 'kolkata', 'rajshahi', 'market', 'victoria', 'university'])) tags.add('city');
+    if (hasAny(['food', 'restaurant', 'panshi'])) tags.add('food');
+
+    return Array.from(tags);
+  }
+
   window.images.forEach(image => {
+    const tags = deriveTags(image);
     grid.innerHTML += `
-      <div class="gallery-item" data-category="${image.category}" onclick="gallery.openLightbox(${image.lightboxId})">
+      <div class="gallery-item" data-category="${image.category}" data-tags="${tags.join(' ')}" onclick="gallery.openLightbox(${image.lightboxId})">
         <div class="gallery-image">
           <img src="${image.src}" alt="${image.alt}" loading="lazy">
           <div class="gallery-overlay">
@@ -406,3 +418,79 @@ function renderGalleryImages() {
     `;
   });
 } 
+
+function renderFeaturedDestinations() {
+  const grid = document.getElementById('destinations-grid');
+  if (!grid || !window.destinations) return;
+
+  grid.innerHTML = '';
+  window.destinations.forEach((d) => {
+    const target = d.videoAnchor ? d.videoAnchor : '#gallery';
+    grid.innerHTML += `
+      <article class="destination-card">
+        <div class="destination-media">
+          <img src="${d.image}" alt="${d.title}" loading="lazy">
+          <div class="destination-shade"></div>
+        </div>
+        <div class="destination-body">
+          <h3 class="destination-title">${d.title}</h3>
+          <p class="destination-desc">${d.description}</p>
+          <div class="destination-actions">
+            <a class="btn btn-primary destination-cta" href="${target}" data-gallery-filter="${d.galleryFilter || ''}">
+              ${d.cta || 'Explore'}
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+
+  // Let cards drive gallery filtering without tight coupling to gallery.js load order
+  grid.querySelectorAll('.destination-cta').forEach((a) => {
+    a.addEventListener('click', () => {
+      const filter = a.getAttribute('data-gallery-filter');
+      if (filter) localStorage.setItem('pendingGalleryFilter', filter);
+    });
+  });
+}
+
+function initStatsCounters() {
+  const numbers = document.querySelectorAll('.stat-number[data-count]');
+  if (!numbers.length) return;
+
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateNumber(el) {
+    const end = Number(el.getAttribute('data-count') || '0');
+    if (!Number.isFinite(end) || end <= 0) return;
+
+    if (prefersReduced) {
+      el.textContent = `${end}+`;
+      return;
+    }
+
+    const durationMs = 900;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min(1, (now - start) / durationMs);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const value = Math.max(0, Math.floor(eased * end));
+      el.textContent = `${value}+`;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.getAttribute('data-animated') === '1') return;
+      el.setAttribute('data-animated', '1');
+      animateNumber(el);
+    });
+  }, { threshold: 0.4 });
+
+  numbers.forEach((n) => observer.observe(n));
+}

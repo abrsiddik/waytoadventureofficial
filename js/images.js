@@ -1,6 +1,6 @@
 window.images = [
   {
-    src: "Travels/India/Sikkim/1000017494.JPEG",
+    src: "travels/india/sikkim/1000017494.jpeg",
     alt: "Sikkim Zero Point",
     title: "Sikkim Zero Point",
     location: "Sikkim, India",
@@ -8,7 +8,7 @@ window.images = [
     lightboxId: 1
   },
   {
-    src: "Travels/Bangla desh/mirinja valley/IMG_6974.jpg",
+    src: "travels/bangla desh/mirinja valley/img_6974.jpg",
     alt: "Lost In Nature",
     title: "Lost In Nature ",
     location: "Lama, Bangladesh",
@@ -16,7 +16,7 @@ window.images = [
     lightboxId: 2
   },
   {
-    src: "Travels/India/Sikkim/1000017210.JPEG",
+    src: "travels/india/sikkim/1000017210.jpeg",
     alt: "Gangtok",
     title: "Gangtok",
     location: "Sikkim, India",
@@ -24,7 +24,7 @@ window.images = [
     lightboxId: 3
   },
   {
-    src: "Travels/Bangla desh/Coxs bazar/IMG_7032.JPG",
+    src: "travels/bangla desh/coxs bazar/img_7032.jpg",
     alt: "Beach View Under the FullMoon",
     title: "Beach View Under the FullMoon",
     location: "Cox's Bazar, Bangladesh",
@@ -32,7 +32,7 @@ window.images = [
     lightboxId: 4
   },
   {
-    src: "Travels/India/Kolkata/FullSizeRender-7.jpg",
+    src: "travels/india/kolkata/fullsizerender-7.jpg",
     alt: "Victoria Memorial",
     title: "Victoria Memorial",
     location: "Kolkata, India",
@@ -40,7 +40,7 @@ window.images = [
     lightboxId: 5
   },
   {
-    src: "Travels/India/Kolkata/1000017232.JPEG",
+    src: "travels/india/kolkata/1000017232.jpeg",
     alt: " New Market Area",
     title: " New Market Area",
     location: "Kolkata, India",
@@ -48,7 +48,7 @@ window.images = [
     lightboxId: 6
   },
   {
-    src: "Travels/Bangla desh/Bandarban/WOMC3002.JPG",
+    src: "travels/bangla desh/bandarban/womc3002.jpg",
     alt: "Mountain Life",
     title: "Mountain Life",
     location: "Bandarban, Bangladesh",
@@ -56,7 +56,7 @@ window.images = [
     lightboxId: 7
   },
   {
-    src: "Travels/Bangla desh/Coxs bazar/IMG_7175.jpg",
+    src: "travels/bangla desh/coxs bazar/img_7175.jpg",
     alt: "Most Beautiful Sunset in Beach",
     title: "Most Beautiful Sunset in Beach",
     location: "Cox's Bazar, Bangladesh",
@@ -64,7 +64,7 @@ window.images = [
     lightboxId: 8
   },
   {
-    src: "Travels/Bangla desh/mirinja valley/IMG_6794.jpg",
+    src: "travels/bangla desh/mirinja valley/img_6794.jpg",
     alt: " Jumghor ",
     title: " Jumghor",
     location: "Mirinja Valley, Bangladesh",
@@ -72,7 +72,7 @@ window.images = [
     lightboxId: 9
   },
   {
-    src: "Travels/Bangla desh/Khoiyachora/IMG_20181211_212713_588.jpg",
+    src: "travels/bangla desh/khoiyachora/img_20181211_212713_588.jpg",
     alt: "Khoiyachora",
     title: "Khoiyachora",
     location: "Shitakund, Bangladesh",
@@ -80,7 +80,7 @@ window.images = [
     lightboxId: 10
   },
   {
-    src: "Travels/Bangla desh/Nodalia sea beach/IMG_3331.JPG",
+    src: "travels/bangla desh/nodalia sea beach/img_3331.jpg",
     alt: "Tent, Fire, Stars, and the Sea – Dream Night ",
     title: "Tent, Fire, Stars, and the Sea – Dream Night ",
     location: "Chittagong, Bangladesh",
@@ -88,7 +88,7 @@ window.images = [
     lightboxId: 11
   },
   {
-    src: "Travels/Bangla desh/Rajshahi/IMG_9559.JPG",
+    src: "travels/bangla desh/rajshahi/img_9559.jpg",
     alt: "Rajshahi University",
     title: "Rajshahi University",
     location: "Rajshahi, Bangladesh",
@@ -96,7 +96,7 @@ window.images = [
     lightboxId: 12
   },
   {
-    src: "Travels/Bangla desh/Rangamati/IMG_0847.JPG",
+    src: "travels/bangla desh/rangamati/img_0847.jpg",
     alt: "Kaptai Lake",
     title: "KaptaiLake",
     location: "Rangamati, Bangladesh",
@@ -104,7 +104,7 @@ window.images = [
     lightboxId: 13
   },
   {
-    src: "Travels/Bangla desh/Tangail/IMG_8403.JPG",
+    src: "travels/bangla desh/tangail/img_8403.jpg",
     alt: "Tangail Countryside",
     title: "Tangail Countryside",
     location: "Tangail, Bangladesh",
@@ -112,7 +112,7 @@ window.images = [
     lightboxId: 14
   },
   {
-    src: "Travels/Bangla desh/Sreemangal/IMG_3965.JPG",
+    src: "travels/bangla desh/sreemangal/img_3965.jpg",
     alt: "Nur Jahan Tea Garden",
     title: "Nur Jahan Tea Garden",
     location: "Sreemangal, Bangladesh",
@@ -120,7 +120,7 @@ window.images = [
     lightboxId: 15
   },
   {
-    src: "Travels/Bangla desh/Sylhet/IMG_20171229_160554_935.jpg",
+    src: "travels/bangla desh/sylhet/img_20171229_160554_935.jpg",
     alt: "Jaflong zero point",
     title: "Jaflong zero point",
     location: "Sylhet, Bangladesh",
@@ -129,7 +129,7 @@ window.images = [
     lightboxId: 16
   },
   {
-    src: "Travels/India/Sikkim/IMG_20230524_133113_062.jpg",
+    src: "travels/india/sikkim/img_20230524_133113_062.jpg",
     alt: "Yumthang Valley",
     title: "Yumthang Valley",
     location: "Sikkim, India",
@@ -137,7 +137,7 @@ window.images = [
     lightboxId: 17
   },
   {
-    src: "Travels/Bangla desh/Moha maya lake/IMG_5012.JPG",
+    src: "travels/bangla desh/moha maya lake/img_5012.jpg",
     alt: "Mohamaya Lake",
     title: "Mohamaya Lake",
     location: "Chitagong, Bangladesh",
@@ -145,7 +145,7 @@ window.images = [
     lightboxId: 18
   },
   {
-    src: "Travels/Bangla desh/Rangamati/IMG_0918.JPG",
+    src: "travels/bangla desh/rangamati/img_0918.jpg",
     alt: "Kaptai Dhupchaya Eco Resort",
     title: "Kaptai Dhupchaya Eco Resort",
     location: "Rangamati, Bangladesh",
@@ -153,7 +153,7 @@ window.images = [
     lightboxId: 19
   },
   {
-    src: "Travels/Bangla desh/Rajshahi/IMG_9444.JPG",
+    src: "travels/bangla desh/rajshahi/img_9444.jpg",
     alt: "Rajshahi city",
     title: "Rajshahi city",
     location: "Rajshahi, Bangladesh",

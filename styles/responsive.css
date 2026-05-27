@@ -53,10 +53,7 @@
         transform: translateY(-7px) rotate(-45deg);
     }
     
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
+    .gallery-grid { column-count: 1; column-gap: var(--spacing-md); }
     
     .video-grid {
         grid-template-columns: 1fr;
@@ -98,9 +95,7 @@
         font-size: var(--font-size-5xl);
     }
     
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .gallery-grid { column-count: 2; }
     
     .video-grid {
         grid-template-columns: 1fr;
@@ -125,9 +120,7 @@
         font-size: var(--font-size-6xl);
     }
     
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .gallery-grid { column-count: 3; }
     
     .video-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -149,9 +142,7 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .gallery-grid { column-count: 4; }
     
     .video-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -168,9 +159,7 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    .gallery-grid { column-count: 4; }
     
     .video-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -184,7 +173,7 @@
 /* Landscape orientation adjustments */
 @media (orientation: landscape) and (max-height: 600px) {
     .hero {
-        height: 40h;
+        height: 40vh;
     }
     
     .hero-title {
@@ -199,6 +188,29 @@
     
     .hero-buttons {
         gap: var(--spacing-md);
+    }
+}
+
+/* Section-specific responsive tweaks for new blocks */
+@media (max-width: 767.98px) {
+    .about-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .about-actions {
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 }
 

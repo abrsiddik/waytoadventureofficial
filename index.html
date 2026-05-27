@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="Travels/logo/WTA.png" type="image/x-icon">
-      . <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="travels/logo/wta.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
   <style>
     .nav-logo a {
       font-family: 'Satisfy', cursive;
@@ -29,13 +29,15 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home" style="color:rgb(29, 140, 214);">Way To Adventure</a>
+                <a href="#home">Way to Adventure</a>
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
+                <a href="#destinations" class="nav-link">Destinations</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#videos" class="nav-link">Videos</a>
-                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#blog" class="nav-link">Stories</a>
+                <a href="https://www.youtube.com/@Waytoadventureofficial" class="nav-link" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
@@ -52,23 +54,103 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
-            <video autoplay muted loop class="hero-video">
-                <source src="FOR WEB SITE BACKGROUND - Made with Clipchamp.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline preload="metadata" class="hero-video">
+                <source src="for web site background - made with clipchamp.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">Discover My Travel Stories</h1>
-            <p class="hero-subtitle">Exploring the beauty of Bangladesh - from pristine beaches to misty mountains</p>
+            <div class="hero-kicker">Authentic Bangladesh travel storytelling</div>
+            <h1 class="hero-title">Way to Adventure</h1>
+            <p class="hero-subtitle">Exploring Bangladesh through trains, food, hidden gems and unforgettable journeys.</p>
             <div class="hero-buttons">
-                <a href="#gallery" class="btn btn-primary">Explore Gallery</a>
-              
-                <a href="#blog" class="btn btn-secondary">Read Stories</a>
+                <a href="#videos" class="btn btn-primary">
+                    <i class="fas fa-play" aria-hidden="true"></i>
+                    <span>Watch Adventures</span>
+                </a>
+
+                <a href="#destinations" class="btn btn-secondary">
+                    <i class="fas fa-location-dot" aria-hidden="true"></i>
+                    <span>Explore Destinations</span>
+                </a>
 
             </div>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Destinations</h2>
+                <p class="section-subtitle">Six journeys that define Way to Adventure — beaches, tea gardens, hills, and city stories.</p>
+            </div>
+
+            <div class="destinations-grid" id="destinations-grid">
+                <!-- Destination cards rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-card">
+                <div class="about-media">
+                    <div class="about-avatar">
+                        <img src="travels/profile/ab-siddik.jpg" alt="AB Siddik - Way to Adventure" loading="lazy">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">Hi, I’m AB Siddik.</h2>
+                    <p>I created Way to Adventure to explore Bangladesh through real experiences—train journeys, local culture, food, cities and hidden places.</p>
+                    <p>Every trip has a story and I share them through travel videos and photography.</p>
+
+                    <div class="about-actions">
+                        <div class="about-social">
+                            <a class="icon-btn" href="https://www.youtube.com/@Waytoadventureofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a class="icon-btn" href="https://www.facebook.com/waytoadventureofficial" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a class="icon-btn" href="https://www.instagram.com/waytoadventureofficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+
+                        <a href="#contact" class="btn btn-primary">Contact</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Stats -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="59">0</div>
+                    <div class="stat-label">Trips</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="570">0</div>
+                    <div class="stat-label">Photos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="47">0</div>
+                    <div class="stat-label">Cities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="1">0</div>
+                    <div class="stat-label">Adventure Brand</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -83,12 +165,18 @@
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="bangladesh">Bangladesh</button>
                 <button class="filter-btn" data-filter="india">India</button>
-              <!--   <button class="filter-btn" data-filter="coxs-bazar">Cox's Bazar</button>
-                <button class="filter-btn" data-filter="sreemangal">Sreemangal</button>
-                <button class="filter-btn" data-filter="sikkim">Sikkim</button>  -->
+                <button class="filter-btn" data-filter="beach">Beach</button>
+                <button class="filter-btn" data-filter="mountain">Mountain</button>
+                <button class="filter-btn" data-filter="city">City</button>
+                <button class="filter-btn" data-filter="food">Food</button>
             </div>
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Images will be rendered by JavaScript -->
+            </div>
+            <div class="gallery-more-wrap">
+                <button class="btn btn-primary gallery-more-btn" id="gallery-toggle-btn" type="button">
+                    View More Photos
+                </button>
             </div>
         </div>
     </section>
@@ -106,8 +194,8 @@
     <section id="videos" class="video-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Travel Videos</h2>
-                <p class="section-subtitle">Experience destinations through my video collection</p>
+                <h2 class="section-title">Latest Videos</h2>
+                <p class="section-subtitle">Fresh stories from trains, food trails, hidden gems, beaches and mountain roads.</p>
             </div>
             <div class="video-grid" id="video-grid">
                 <!-- Videos will be rendered by JavaScript -->
@@ -134,8 +222,8 @@
     <section id="contact" class="contact-section">
          <div class="container">
         <div class="header">
-            <h1>Get In Touch</h1>
-            <p>Share your travel stories or ask me anything about these destinations</p>
+            <h1>Work with Way to Adventure</h1>
+            <p>For collaborations, promotions, and travel features — let’s create something cinematic and authentic.</p>
         </div>
 
         <div class="info-grid">
@@ -227,7 +315,7 @@
                     <h3>Travel Stories</h3>
                     <p>Exploring the beauty of Bangladesh and India, sharing stories and experiences from amazing destinations.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/waytoadventure03" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/waytoadventureofficial" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/waytoadventureofficial/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                      <!--    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
                         <a href="https://www.youtube.com/@Waytoadventureofficial" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -269,7 +357,7 @@
               </button>
               <br><br>
               <button class="facebook-button">
-        <a href="https://www.facebook.com/WayToAdventure03" class="facebook-link" target="_blank">
+        <a href="https://www.facebook.com/WayToAdventureofficial" class="facebook-link" target="_blank">
             <svg class="facebook-icon" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
@@ -285,6 +373,7 @@
         </div>
     </footer>
 
+    <script src="js/destinations.js"></script>
     <script src="js/images.js"></script>
     <script src="js/videos.js"></script>
     <script src="js/main.js"></script>

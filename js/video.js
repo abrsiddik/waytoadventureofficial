@@ -3,59 +3,51 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!grid) return;
   grid.innerHTML = '';
 
-  // Function to strip HTML tags for character counting
   function stripHtml(html) {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
   }
 
-  window.videos.forEach((video, index) => {
-    // Strip HTML for character counting
-    const plainText = stripHtml(video.desc);
-    const shortDesc = plainText.length > 100 ? plainText.substring(0, 100) + '...' : video.desc;
-    
-    grid.innerHTML += `
-      <div class="video-item" data-video-index="${index}">
-        <div class="video-container">
-          <iframe src="${video.src}" title="${video.title}" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <h3>${video.title}</h3>
-        <div class="video-description">
-          <p class="short-desc">${shortDesc}</p>
-          <p class="full-desc" style="display: none;">${video.desc}</p>
-          ${plainText.length > 100 ? '<span class="read-more-btn" style="color: var(--primary-color); cursor: pointer; font-weight: 500; text-decoration: underline;">Read More</span>' : ''}
-        </div>
-      </div>
-    `;
-  });
+  function getYouTubeId(url) {
+    if (!url) return '';
+    const cleaned = String(url).replace('/embed//', '/embed/');
+    const embedMatch = cleaned.match(/embed\/([^?&/]+)/i);
+    if (embedMatch && embedMatch[1]) return embedMatch[1];
+    const shortMatch = cleaned.match(/youtu\.be\/([^?&/]+)/i);
+    if (shortMatch && shortMatch[1]) return shortMatch[1];
+    const watchMatch = cleaned.match(/[?&]v=([^?&/]+)/i);
+    if (watchMatch && watchMatch[1]) return watchMatch[1];
+    return '';
+  }
 
-  // Add click event listeners for Read More buttons
-  document.querySelectorAll('.read-more-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      const videoItem = this.closest('.video-item');
-      const shortDesc = videoItem.querySelector('.short-desc');
-      const fullDesc = videoItem.querySelector('.full-desc');
-      const videoContainer = videoItem.querySelector('.video-container');
-      
-      // Toggle description
-      if (fullDesc.style.display === 'none') {
-        shortDesc.style.display = 'none';
-        fullDesc.style.display = 'block';
-        this.textContent = 'Read Less';
-        
-        // Expand video container
-        videoContainer.style.height = '400px';
-        videoContainer.style.transition = 'height 0.3s ease';
-      } else {
-        shortDesc.style.display = 'block';
-        fullDesc.style.display = 'none';
-        this.textContent = 'Read More';
-        
-        // Collapse video container
-        videoContainer.style.height = '220px';
-      }
-    });
+  window.videos.forEach((video, index) => {
+    const plainText = stripHtml(video.desc);
+    const shortDesc = plainText.length > 140 ? `${plainText.substring(0, 140)}...` : plainText;
+    const videoId = getYouTubeId(video.src);
+    const watchUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : video.src;
+    const thumb = videoId
+      ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      : 'https://i.ytimg.com/vi/mkI-UAugPuI/hqdefault.jpg';
+
+    grid.innerHTML += `
+      <article class="video-item video-card" data-video-index="${index}">
+        <div class="video-thumb-wrap">
+          <img class="video-thumb" src="${thumb}" alt="${video.title}" loading="lazy">
+          <div class="video-thumb-overlay"></div>
+          <a class="video-play-badge" href="${watchUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${video.title} on YouTube">
+            <i class="fas fa-play"></i>
+          </a>
+        </div>
+        <div class="video-card-body">
+          <h3>${video.title}</h3>
+          <p class="video-card-desc">${shortDesc}</p>
+          <a class="btn btn-primary video-watch-btn" href="${watchUrl}" target="_blank" rel="noopener noreferrer">
+            Watch on YouTube
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+    `;
   });
 }); 
